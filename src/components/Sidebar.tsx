@@ -1,4 +1,10 @@
 import { X, Users, Upload, Video, TrendingUp } from 'lucide-react'
+interface SidebarProps {
+  isMobileMenuOpen: boolean;
+  onClose: () => void;
+  setActiveTab?: (tab: string) => void;
+  activeTab?: string;
+}
 
 interface SidebarProps {
   isMobileMenuOpen: boolean

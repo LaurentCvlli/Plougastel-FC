@@ -28,32 +28,29 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [createdUsers, setCreatedUsers] = useState<CreatedUser[]>([])
 
   useEffect(() => {
-    // Load existing users from localStorage
     const savedUsers = localStorage.getItem('createdUsers')
     if (savedUsers) {
       setCreatedUsers(JSON.parse(savedUsers))
     }
     setLoading(false)
-    
-    // Listen for storage changes to update createdUsers
+
     const handleStorageChange = () => {
       const savedUsers = localStorage.getItem('createdUsers')
       if (savedUsers) {
         setCreatedUsers(JSON.parse(savedUsers))
       }
     }
-    
-    // Listen for custom events from admin dashboard
+
     const handleCustomUpdate = () => {
       const savedUsers = localStorage.getItem('createdUsers')
       if (savedUsers) {
         setCreatedUsers(JSON.parse(savedUsers))
       }
     }
-    
+
     window.addEventListener('storage', handleStorageChange)
     window.addEventListener('userDataUpdated', handleCustomUpdate)
-    
+
     return () => {
       window.removeEventListener('storage', handleStorageChange)
       window.removeEventListener('userDataUpdated', handleCustomUpdate)
@@ -61,7 +58,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, [])
 
   const signIn = async (username: string, password: string) => {
-    // Demo credentials
     if (username === 'LPasquier49' && password === 'PFCR1Admin') {
       const adminUser = {
         id: 'admin-1',
@@ -88,7 +84,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       return
     }
 
-    // Check created users
     const foundUser = createdUsers.find(u => u.username === username && u.password === password)
     if (foundUser) {
       const userObj = {
@@ -138,11 +133,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       createdAt: new Date().toISOString().split('T')[0],
       status: 'active'
     }
-    
+
     const updatedUsers = [...createdUsers, newUser]
     setCreatedUsers(updatedUsers)
-    
-    // Save to localStorage
+
     localStorage.setItem('createdUsers', JSON.stringify(updatedUsers))
   }
 
@@ -166,3 +160,4 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 }
+
