@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-gray-200;
+  }
+  
+  body {
+    @apply bg-white text-club-black font-body;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-club-red hover:bg-club-red-dark text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-club-red focus:ring-opacity-50;
+  }
+  
+  .btn-secondary {
+    @apply bg-club-black hover:bg-club-black-light text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-club-black focus:ring-opacity-50;
+  }
+  
+  .btn-outline {
+    @apply border-2 border-club-red text-club-red hover:bg-club-red hover:text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-club-red focus:ring-opacity-50;
+  }
+  
+  .card {
+    @apply bg-white rounded-xl shadow-lg border border-gray-100 p-6 transition-all duration-200 hover:shadow-xl hover:-translate-y-1;
+  }
+  
+  .input-field {
+    @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-club-red focus:border-transparent transition-all duration-200 bg-white;
+  }
+  
+  .nav-link {
+    @apply text-gray-600 hover:text-club-red font-medium transition-colors duration-200 px-4 py-2 rounded-lg hover:bg-club-red hover:bg-opacity-10;
+  }
+  
+  .nav-link-active {
+    @apply text-club-red bg-club-red bg-opacity-10 font-semibold px-4 py-2 rounded-lg;
+  }
+}
+
+.loading-spinner {
+  @apply animate-spin rounded-full border-4 border-gray-200 border-t-club-red;
+}
+
+.video-thumbnail {
+  @apply relative overflow-hidden rounded-lg bg-gray-100 transition-transform duration-200 hover:scale-105;
+}
+
+.video-thumbnail::before {
+  content: '';
+  @apply absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-20 transition-all duration-200 z-10;
+}
+
+@media (max-width: 768px) {
+  .btn-primary, .btn-secondary, .btn-outline {
+    @apply py-2 px-4 text-sm;
+  }
+  
+  .card {
+    @apply p-4;
+  }
+}
