@@ -175,7 +175,7 @@ export default function AdminDashboard() {
         localStorage.setItem('createdUsers', JSON.stringify(updatedUsers))
         
         // Force update of createdUsers state
-        setCreatedUsers(updatedUsers)
+      
         
         // Trigger storage event for other components
         window.dispatchEvent(new Event('storage'))
